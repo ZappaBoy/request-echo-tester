@@ -1,15 +1,18 @@
 import json
+
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def healthcheck():
+    app.logger.info('Alive')
     return "Alive"
 
 
 @app.route("/test", methods=["GET", "POST"])
 def test():
+    app.logger.info('Testing')
     req_data = {}
     app.logger.info('Testing')
     req_data['method'] = request.method
